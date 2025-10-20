@@ -244,3 +244,30 @@ async def cloudwatch_logs_search(es, params):
 
     return response
 
+def create_workload():
+    return {
+        "version": 2,
+        "description": "CloudWatch Logs Test",
+        "operations": [
+            {
+                "name": "simple-search",
+                "operation-type": "cloudwatch-logs-search",
+                "query": "ERROR",  
+                "log_group": "/your/log/group/name", 
+                "region": "us-east-1",  
+                "time_range_hours": 1  
+            }
+        ],
+        "test_procedures": [
+            {
+                "name": "quick-test",
+                "schedule": [
+                    {
+                        "operation": "simple-search",
+                        "clients": 1,
+                        "iterations": 5  
+                    }
+                ]
+            }
+        ]
+    }
