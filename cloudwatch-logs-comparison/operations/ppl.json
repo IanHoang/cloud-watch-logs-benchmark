@@ -1,5 +1,5 @@
     {
-      "name": "0-count-query",
+      "name": "os-ppl-0-count-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -8,7 +8,7 @@
       }
     },
     {
-      "name": "1-sum-bytes-query",
+      "name": "os-ppl-1-sum-bytes-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -17,7 +17,7 @@
       }
     },
     {
-      "name": "2-host-count-query",
+      "name": "os-ppl-2-host-count-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -26,7 +26,7 @@
       }
     },
     {
-      "name": "3-host-filter-query",
+      "name": "os-ppl-3-host-filter-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -35,7 +35,7 @@
       }
     },
     {
-      "name": "4-hostname-filter-query",
+      "name": "os-ppl-4-hostname-filter-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "name": "5-frontend-host-query",
+      "name": "os-ppl-5-frontend-host-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -53,7 +53,7 @@
       }
     },
     {
-      "name": "6-iad12-host-query",
+      "name": "os-ppl-6-iad12-host-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -62,7 +62,7 @@
       }
     },
     {
-      "name": "7-cell1-host-query",
+      "name": "os-ppl-7-cell1-host-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -71,7 +71,7 @@
       }
     },
     {
-      "name": "8-host-group-query",
+      "name": "os-ppl-8-host-group-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -80,7 +80,7 @@
       }
     },
     {
-      "name": "9-timestamp-query",
+      "name": "os-ppl-9-timestamp-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -89,7 +89,7 @@
       }
     },
     {
-      "name": "10-host-timestamp-query",
+      "name": "os-ppl-10-host-timestamp-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -98,7 +98,7 @@
       }
     },
     {
-      "name": "11-limit-query",
+      "name": "os-ppl-11-limit-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -107,7 +107,7 @@
       }
     },
     {
-      "name": "12-sum-bytes-by-host-query",
+      "name": "os-ppl-12-sum-bytes-by-host-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -116,7 +116,7 @@
       }
     },
     {
-      "name": "13-max-bytes-by-host-query",
+      "name": "os-ppl-13-max-bytes-by-host-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -125,7 +125,7 @@
       }
     },
     {
-      "name": "14-distinct-remote-addr-query",
+      "name": "os-ppl-14-distinct-remote-addr-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -134,7 +134,7 @@
       }
     },
     {
-      "name": "15-distinct-requestid-query",
+      "name": "os-ppl-15-distinct-requestid-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -143,7 +143,7 @@
       }
     },
     {
-      "name": "16-distinct-hostname-query",
+      "name": "os-ppl-16-distinct-hostname-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -152,7 +152,7 @@
       }
     },
     {
-      "name": "17-sum-req-content-query",
+      "name": "os-ppl-17-sum-req-content-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -161,7 +161,7 @@
       }
     },
     {
-      "name": "18-distinct-remote-addr-host-query",
+      "name": "os-ppl-18-distinct-remote-addr-host-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
@@ -170,7 +170,7 @@
       }
     },
     {
-      "name": "19-max-bytes-query",
+      "name": "os-ppl-19-max-bytes-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_ppl",
       "method": "POST",
