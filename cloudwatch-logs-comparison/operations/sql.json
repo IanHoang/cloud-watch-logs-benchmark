@@ -1,10 +1,4 @@
     {
-      "name": "index-append",
-      "operation-type": "bulk",
-      "bulk-size": {{bulk_size | default(5000)}},
-      "ingest-percentage": {{ingest_percentage | default(100)}}
-    },
-    {
       "name": "os-sql-0-count-query",
       "operation-type": "raw-request",
       "path": "/_plugins/_sql",
