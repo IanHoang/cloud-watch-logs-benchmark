@@ -1,3 +1,0 @@
-
-The JSON files comprising the workload have been modified to conform to OpenSearch Benchmark terminology and comply with OpenSearch features.  The "challenges" directory has been renamed to "test_procedures" for the same reason.
-
