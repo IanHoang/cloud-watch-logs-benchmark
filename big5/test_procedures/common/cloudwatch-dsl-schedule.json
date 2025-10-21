@@ -1,0 +1,154 @@
+{
+  "operation": "cw-match-all",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-term",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-range",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-range-numeric",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-keyword-in-range",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-desc-sort-timestamp",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-asc-sort-timestamp",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-desc-sort-timestamp-with-match",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-asc-sort-timestamp-with-match",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sort-numeric-desc",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sort-numeric-asc",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sort-numeric-desc-with-match",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sort-numeric-asc-with-match",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-range-field-conjunction-big-range-big-term",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-range-field-disjunction-big-range-small-term",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-range-field-conjunction-small-range-small-term",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-range-field-conjunction-small-range-big-term",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-query-string-on-message",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-query-string-on-message-filtered",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-query-string-on-message-filtered-sorted",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-range-with-asc-sort",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-range-with-desc-sort",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+}

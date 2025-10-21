@@ -87,7 +87,9 @@
     }
   ],
   "operations": [
-    {{ benchmark.collect(parts="operations/*.json") }}
+    {{ benchmark.collect(parts="operations/*.json") }},
+    {{ benchmark.collect(parts="operations/cloudwatch.json") }},
+    {{ benchmark.collect(parts="operations/cloudwatch-ppl.json") }}
   ],
   "test_procedures": [
     {{ benchmark.collect(parts="test_procedures/*.json") }}

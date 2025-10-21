@@ -39,4 +39,20 @@
     {% endwith %}
     {{ benchmark.collect(parts="ppl/ppl-test-schedule.json") }}
   ]
+},
+{
+  "name": "cloudwatch-dsl",
+  "description": "Runs DSL-based queries against CloudWatch Logs for benchmarking. Requires cw_log_group workload parameter.",
+  "default": false,
+  "schedule": [
+    {{ benchmark.collect(parts="common/cloudwatch-dsl-schedule.json") }}
+  ]
+},
+{
+  "name": "cloudwatch-ppl",
+  "description": "Runs PPL-equivalent queries against CloudWatch Logs for benchmarking. Requires cw_log_group workload parameter.",
+  "default": false,
+  "schedule": [
+    {{ benchmark.collect(parts="common/cloudwatch-ppl-schedule.json") }}
+  ]
 }
