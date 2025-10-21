@@ -1,0 +1,48 @@
+{
+  "name": "dsl",
+  "description": "Runs DSL queries against OpenSearch for client ingestion log analysis",
+  "default": true,
+  "schedule": [
+    {{ benchmark.collect(parts="common/dsl-schedule.json") }}
+  ]
+},
+{
+  "name": "ppl",
+  "description": "Runs PPL (Piped Processing Language) queries against OpenSearch. Requires SQL plugin to be installed.",
+  "default": false,
+  "schedule": [
+    {{ benchmark.collect(parts="common/ppl-schedule.json") }}
+  ]
+},
+{
+  "name": "sql",
+  "description": "Runs SQL queries against OpenSearch. Requires SQL plugin to be installed.",
+  "default": false,
+  "schedule": [
+    {{ benchmark.collect(parts="common/sql-schedule.json") }}
+  ]
+},
+{
+  "name": "cloudwatch-dsl",
+  "description": "Runs DSL queries translated to CloudWatch Logs Insights for benchmarking. Requires cw_log_group workload parameter.",
+  "default": false,
+  "schedule": [
+    {{ benchmark.collect(parts="common/cloudwatch-dsl-schedule.json") }}
+  ]
+},
+{
+  "name": "cloudwatch-ppl",
+  "description": "Runs PPL-equivalent queries against CloudWatch Logs (MANUAL TRANSLATION REQUIRED). Requires cw_log_group workload parameter.",
+  "default": false,
+  "schedule": [
+    {{ benchmark.collect(parts="common/cloudwatch-ppl-schedule.json") }}
+  ]
+},
+{
+  "name": "cloudwatch-sql",
+  "description": "Runs SQL-equivalent queries against CloudWatch Logs (MANUAL TRANSLATION REQUIRED). Requires cw_log_group workload parameter.",
+  "default": false,
+  "schedule": [
+    {{ benchmark.collect(parts="common/cloudwatch-sql-schedule.json") }}
+  ]
+}
