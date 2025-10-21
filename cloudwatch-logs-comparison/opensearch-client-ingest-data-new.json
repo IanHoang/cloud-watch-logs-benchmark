@@ -1,0 +1,222 @@
+{
+    "mappings": {
+        "properties": {
+            "@timestamp": {
+                "type": "date"
+            },
+            "BeMappedPort": {
+                "type": "long"
+            },
+            "BeSrcPort": {
+                "type": "long"
+            },
+            "ConnectionId": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "Hostname": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "Marketplace": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "Operation": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "Program": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "REMOTE_ADDR": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "REMOTE_PORT": {
+                "type": "long"
+            },
+            "RelayPort": {
+                "type": "long"
+            },
+            "Status": {
+                "properties": {
+                    "200": {
+                        "type": "long"
+                    },
+                    "2xx": {
+                        "type": "long"
+                    },
+                    "3xx": {
+                        "type": "long"
+                    },
+                    "4xx": {
+                        "type": "long"
+                    },
+                    "5xx": {
+                        "type": "long"
+                    }
+                }
+            },
+            "badStatus": {
+                "type": "long"
+            },
+            "bytesReqBodyBe": {
+                "type": "long"
+            },
+            "bytesReqBodyFe": {
+                "type": "long"
+            },
+            "bytesReqHdrBe": {
+                "type": "long"
+            },
+            "bytesReqHdrFe": {
+                "type": "long"
+            },
+            "bytesRespBodyFe": {
+                "type": "long"
+            },
+            "bytesRespHdrBe": {
+                "type": "long"
+            },
+            "bytesRespHdrFe": {
+                "type": "long"
+            },
+            "correlationId": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "curtainApplianceHealthCheckReq": {
+                "type": "long"
+            },
+            "curtainNodeHealthCheckReq": {
+                "type": "long"
+            },
+            "detectPutCandidate": {
+                "type": "long"
+            },
+            "firstByteReadTimeMillis": {
+                "type": "long"
+            },
+            "host": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "lbIp": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "maxIdleTimeMillis": {
+                "type": "long"
+            },
+            "noFreePutBuffers": {
+                "type": "long"
+            },
+            "putBufferedBytes": {
+                "type": "long"
+            },
+            "reqContentLength": {
+                "type": "long"
+            },
+            "reqSuccess": {
+                "type": "long"
+            },
+            "requestId": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "requestSequenceNumber": {
+                "type": "long"
+            },
+            "tmpWorkerThreadId": {
+                "type": "long"
+            },
+            "uri": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            },
+            "usedPutBufferPool": {
+                "type": "long"
+            },
+            "userAgent": {
+                "fields": {
+                    "keyword": {
+                        "ignore_above": 256,
+                        "type": "keyword"
+                    }
+                },
+                "type": "text"
+            }
+        }
+    },
+    "settings": {
+        "index": {
+            "blocks": {
+                "read_only_allow_delete": "false",
+                "write": "false"
+            },
+            "number_of_replicas": "{{number_of_replicas | default(2)}}",
+            "number_of_shards": "{{number_of_shards | default(50)}}",
+            "refresh_interval": "30s",
+            "replication": {
+                "type": "DOCUMENT"
+            }
+        }
+    }
+}

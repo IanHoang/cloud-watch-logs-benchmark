@@ -1,0 +1,31 @@
+{% import "benchmark.helpers" as benchmark with context %}
+{
+  "version": 2,
+  "description": "Tracker-generated workload for cloudwatch-logs-comparison",
+  "indices": [
+    {
+      "name": "opensearch-client-ingest-data-new",
+      "body": "opensearch-client-ingest-data-new.json"
+    }
+  ],
+  "corpora": [
+    {
+      "name": "opensearch-client-ingest-data-new",
+      "documents": [
+        {
+          "target-index": "opensearch-client-ingest-data-new",
+          "source-file": "opensearch-client-ingest-data-new-documents.json.bz2",
+          "document-count": 10000,
+          "compressed-bytes": 1284263,
+          "uncompressed-bytes": 10591693
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {{ benchmark.collect(parts="operations/*.json") }}
+  ],
+  "test_procedures": [
+    {{ benchmark.collect(parts="test_procedures/*.json") }}
+  ]
+}
