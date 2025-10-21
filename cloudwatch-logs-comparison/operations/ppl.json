@@ -1,0 +1,180 @@
+    {
+      "name": "0-count-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | stats count()"
+      }
+    },
+    {
+      "name": "1-sum-bytes-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | stats sum(bytesReqHdrBe)"
+      }
+    },
+    {
+      "name": "2-host-count-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where host = 'service.internal' | stats count()"
+      }
+    },
+    {
+      "name": "3-host-filter-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where host = 'service.internal' and like(Hostname, '%cell-1-31.iad12%') | head 10000"
+      }
+    },
+    {
+      "name": "4-hostname-filter-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where Hostname = 'aws-logs-frontend-prod-iad12-cell-1-31.iad12.amazon.com' | head 10000"
+      }
+    },
+    {
+      "name": "5-frontend-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where like(Hostname, 'aws-logs-frontend-prod-%') | head 10000"
+      }
+    },
+    {
+      "name": "6-iad12-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where like(Hostname, '%-31.iad12.amazon.com') | head 10000"
+      }
+    },
+    {
+      "name": "7-cell1-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where like(Hostname, '%-cell-1-%') | head 10000"
+      }
+    },
+    {
+      "name": "8-host-group-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where host = 'service.internal' | stats count() by Hostname, Marketplace | head 10000"
+      }
+    },
+    {
+      "name": "9-timestamp-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | sort @timestamp | head 10000"
+      }
+    },
+    {
+      "name": "10-host-timestamp-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where host = 'service.internal' | sort @timestamp | head 10000"
+      }
+    },
+    {
+      "name": "11-limit-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | head 10000"
+      }
+    },
+    {
+      "name": "12-sum-bytes-by-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | stats sum(bytesReqHdrBe) by Hostname | head 10000"
+      }
+    },
+    {
+      "name": "13-max-bytes-by-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where Hostname = 'aws-logs-frontend-prod-iad12-cell-1-31.iad12.amazon.com' | stats max(bytesReqHdrBe)"
+      }
+    },
+    {
+      "name": "14-distinct-remote-addr-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | stats dc(REMOTE_ADDR)"
+      }
+    },
+    {
+      "name": "15-distinct-requestid-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | stats dc(requestId) | head 10000"
+      }
+    },
+    {
+      "name": "16-distinct-hostname-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | dedup Hostname | fields Hostname"
+      }
+    },
+    {
+      "name": "17-sum-req-content-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where host = 'service.internal' | stats sum(reqContentLength) as val"
+      }
+    },
+    {
+      "name": "18-distinct-remote-addr-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where host = 'service.internal' | stats dc(REMOTE_ADDR) as distinct_ct"
+      }
+    },
+    {
+      "name": "19-max-bytes-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_ppl",
+      "method": "POST",
+      "body": {
+        "query": "source={{index_name | default('opensearch-client-ingest-data-new')}} | where host = 'service.internal' | stats max(bytesReqHdrFe), max(bytesReqHdrBe), max(bytesReqBodyFe), max(bytesReqBodyBe), max(bytesRespHdrFe), max(bytesRespHdrBe), max(bytesRespBodyFe), max(reqContentLength), max(putBufferedBytes) | head 10000"
+      }
+    }

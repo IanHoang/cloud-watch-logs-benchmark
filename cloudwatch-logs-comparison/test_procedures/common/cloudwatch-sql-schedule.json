@@ -1,0 +1,140 @@
+{
+  "operation": "cw-sql-0-count-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-1-sum-bytes-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-2-host-count-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-3-host-filter-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-4-hostname-filter-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-5-frontend-host-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-6-iad12-host-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-7-cell1-host-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-8-host-group-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-9-timestamp-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-10-host-timestamp-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-11-limit-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-12-sum-bytes-by-host-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-13-max-bytes-by-host-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-14-distinct-remote-addr-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-15-distinct-requestid-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-16-distinct-hostname-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-17-sum-req-content-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-18-distinct-remote-addr-host-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+},
+{
+  "operation": "cw-sql-19-max-bytes-query",
+  "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
+  "iterations": {{ test_iterations | default(50) | tojson }},
+  "target-throughput": {{ target_throughput | default(1) | tojson }},
+  "clients": {{ search_clients | default(1) }}
+}

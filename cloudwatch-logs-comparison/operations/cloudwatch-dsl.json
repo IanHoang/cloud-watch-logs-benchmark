@@ -1,0 +1,296 @@
+    {
+      "name": "cw-0-count-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "body": {
+        "query": {
+          "match_all": {}
+        }
+      }
+    },
+    {
+      "name": "cw-1-sum-bytes-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "body": {
+        "query": {
+          "match_all": {}
+        }
+      }
+    },
+    {
+      "name": "cw-2-host-count-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "body": {
+        "query": {
+          "term": {
+            "host": "service.internal"
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-3-host-filter-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "host": "service.internal"
+                }
+              },
+              {
+                "wildcard": {
+                  "Hostname": {
+                    "value": "*cell-1-31.iad12*"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-4-hostname-filter-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "match": {
+            "Hostname": "aws-logs-frontend-prod-iad12-cell-1-31.iad12.amazon.com"
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-5-frontend-host-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "wildcard": {
+            "Hostname": {
+              "value": "aws-logs-frontend-prod-*"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-6-iad12-host-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "wildcard": {
+            "Hostname": {
+              "value": "*-31.iad12.amazon.com"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-7-cell1-host-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "wildcard": {
+            "Hostname": {
+              "value": "*-cell-1-*"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-8-host-group-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "term": {
+            "host": "service.internal"
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-9-timestamp-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "match_all": {}
+        }
+      }
+    },
+    {
+      "name": "cw-10-host-timestamp-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "term": {
+            "host": "service.internal"
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-11-limit-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "match_all": {}
+        }
+      }
+    },
+    {
+      "name": "cw-12-sum-bytes-by-host-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "match_all": {}
+        }
+      }
+    },
+    {
+      "name": "cw-13-max-bytes-by-host-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "body": {
+        "query": {
+          "term": {
+            "Hostname": "aws-logs-frontend-prod-iad12-cell-1-31.iad12.amazon.com"
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-14-distinct-remote-addr-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "body": {
+        "query": {
+          "match_all": {}
+        }
+      }
+    },
+    {
+      "name": "cw-15-distinct-requestid-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "match_all": {}
+        }
+      }
+    },
+    {
+      "name": "cw-16-distinct-hostname-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "match_all": {}
+        }
+      }
+    },
+    {
+      "name": "cw-17-sum-req-content-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "body": {
+        "query": {
+          "term": {
+            "host": "service.internal"
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-18-distinct-remote-addr-host-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "body": {
+        "query": {
+          "term": {
+            "host": "service.internal"
+          }
+        }
+      }
+    },
+    {
+      "name": "cw-19-max-bytes-query",
+      "operation-type": "cloudwatch-logs-search",
+      "log_group": "{{ cw_log_group | default('opensearch-client-ingest-data-new') }}",
+      "region": "{{ cw_region | default('us-east-1') }}",
+      "time_range_hours": {{ time_range_hours | default(24) }},
+      "limit": 10000,
+      "body": {
+        "query": {
+          "term": {
+            "host": "service.internal"
+          }
+        }
+      }
+    }

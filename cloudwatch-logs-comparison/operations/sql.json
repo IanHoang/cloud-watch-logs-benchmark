@@ -1,0 +1,180 @@
+    {
+      "name": "0-count-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT count(*) as count_ FROM {{index_name | default('opensearch-client-ingest-data-new')}}"
+      }
+    },
+    {
+      "name": "1-sum-bytes-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT count(*) FROM {{index_name | default('opensearch-client-ingest-data-new')}} where host = 'service.internal'"
+      }
+    },
+    {
+      "name": "2-host-count-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT SUM(bytesReqHdrBe) FROM {{index_name | default('opensearch-client-ingest-data-new')}}"
+      }
+    },
+    {
+      "name": "3-host-filter-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT * FROM {{index_name | default('opensearch-client-ingest-data-new')}} where Hostname like 'aws-logs-frontend-prod-iad12-cell-1-31.iad12.amazon.com' limit 10000"
+      }
+    },
+    {
+      "name": "4-hostname-filter-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT * FROM {{index_name | default('opensearch-client-ingest-data-new')}} where host = 'service.internal' AND Hostname like '%cell-1-31.iad12%' LIMIT 10000"
+      }
+    },
+    {
+      "name": "5-frontend-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT * FROM {{index_name | default('opensearch-client-ingest-data-new')}} where Hostname like '%-31.iad12.amazon.com' limit 10000"
+      }
+    },
+    {
+      "name": "6-iad12-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT * FROM {{index_name | default('opensearch-client-ingest-data-new')}} where Hostname like 'aws-logs-frontend-prod-%' limit 10000"
+      }
+    },
+    {
+      "name": "7-cell1-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT count(*), Hostname, Marketplace FROM {{index_name | default('opensearch-client-ingest-data-new')}} where host = 'service.internal' GROUP BY 2,3 LIMIT 10000"
+      }
+    },
+    {
+      "name": "8-host-group-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT * FROM {{index_name | default('opensearch-client-ingest-data-new')}} where Hostname like '%-cell-1-%' limit 10000"
+      }
+    },
+    {
+      "name": "9-timestamp-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT * FROM {{index_name | default('opensearch-client-ingest-data-new')}} where host = 'service.internal' ORDER BY @timestamp asc limit 10000"
+      }
+    },
+    {
+      "name": "10-host-timestamp-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT * FROM {{index_name | default('opensearch-client-ingest-data-new')}} ORDER BY @timestamp asc limit 10000"
+      }
+    },
+    {
+      "name": "11-limit-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT SUM(bytesReqHdrBe) FROM {{index_name | default('opensearch-client-ingest-data-new')}} group by Hostname limit 10000"
+      }
+    },
+    {
+      "name": "12-sum-bytes-by-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT * FROM {{index_name | default('opensearch-client-ingest-data-new')}} limit 10000"
+      }
+    },
+    {
+      "name": "13-max-bytes-by-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT COUNT(DISTINCT REMOTE_ADDR) FROM {{index_name | default('opensearch-client-ingest-data-new')}}"
+      }
+    },
+    {
+      "name": "14-distinct-remote-addr-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT MAX(bytesReqHdrBe) FROM {{index_name | default('opensearch-client-ingest-data-new')}} where Hostname like 'aws-logs-frontend-prod-iad12-cell-1-31.iad12.amazon.com'"
+      }
+    },
+    {
+      "name": "15-distinct-requestid-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT DISTINCT Hostname FROM {{index_name | default('opensearch-client-ingest-data-new')}}"
+      }
+    },
+    {
+      "name": "16-distinct-hostname-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT COUNT(DISTINCT requestId) FROM {{index_name | default('opensearch-client-ingest-data-new')}} limit 10000"
+      }
+    },
+    {
+      "name": "17-sum-req-content-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT COUNT(DISTINCT REMOTE_ADDR) as distinct_ct FROM {{index_name | default('opensearch-client-ingest-data-new')}} where host = 'service.internal'"
+      }
+    },
+    {
+      "name": "18-distinct-remote-addr-host-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT sum(CAST(reqContentLength as double)) as val FROM {{index_name | default('opensearch-client-ingest-data-new')}} where host = 'service.internal'"
+      }
+    },
+    {
+      "name": "19-max-bytes-query",
+      "operation-type": "raw-request",
+      "path": "/_plugins/_sql",
+      "method": "POST",
+      "body": {
+        "query": "SELECT MAX(bytesReqHdrFe), MAX(bytesReqHdrBe), MAX(bytesReqBodyFe), MAX(bytesReqBodyBe), MAX(bytesRespHdrFe), MAX(bytesRespHdrBe), MAX(bytesRespBodyFe), MAX(reqContentLength), MAX(putBufferedBytes) FROM {{index_name | default('opensearch-client-ingest-data-new')}} where host = 'service.internal' LIMIT 10000"
+      }
+    }
