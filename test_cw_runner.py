@@ -1,10 +1,10 @@
 import aioboto3
+import argparse
 import asyncio
 import time
 import json
 from datetime import datetime, timedelta
 from typing import Dict, Any, Optional
-
 
 class AsyncCloudWatchLogsRunner:
     def __init__(self, params: Dict[str, Any]):
@@ -220,54 +220,52 @@ class AsyncCloudWatchLogsRunner:
         # Simple keyword search
         return f'fields @timestamp, @message | filter @message like /{query}/ | limit 1000'
 
+async def test_runner():
+    parser = argparse.ArgumentParser(description="CloudWatch Logs Runner")
+    parser.add_argument("--region", default="us-east-1", help="AWS region")
+    parser.add_argument("--log-group", required=True, help="Log group name")
+    parser.add_argument("--query", required=True, help="Query string")
+    parser.add_argument("--hours", type=int, default=1, help="Hours to look back (default: 1)")
 
-# Register with OpenSearch Benchmark
-def register(registry):
-    registry.register_runner("cloudwatch-logs-search", cloudwatch_logs_search)
+    args = parser.parse_args()
 
+    print(args)
+    import time
+    # time.sleep(30)
 
-async def cloudwatch_logs_search(es, params):
-    """Main runner function for OpenSearch Benchmark"""
-    runner = AsyncCloudWatchLogsRunner(params)
-
-    # Extract query - handle different parameter formats
-    query = None
-    if 'body' in params:
-        query = params['body'].get('query', params['body'])
-    elif 'query' in params:
-        query = params['query']
-    else:
-        query = {'match_all': {}}
-
-    # Execute the search
-    response = await runner.search(query, **params)
-
-    return response
-
-def create_workload():
-    return {
-        "version": 2,
-        "description": "CloudWatch Logs Test",
-        "operations": [
-            {
-                "name": "simple-search",
-                "operation-type": "cloudwatch-logs-search",
-                "query": "ERROR",  
-                "log_group": "/your/log/group/name", 
-                "region": "us-east-1",  
-                "time_range_hours": 1  
-            }
-        ],
-        "test_procedures": [
-            {
-                "name": "quick-test",
-                "schedule": [
-                    {
-                        "operation": "simple-search",
-                        "clients": 1,
-                        "iterations": 5  
-                    }
-                ]
-            }
-        ]
+    test_params = {
+        'log_group': args.log_group,
+        'region': args.region
     }
+    # print(test_params["log_group"])
+
+    print(f"Testing CloudWatch Logs Runner")
+    log_group = test_params["log_group"]
+    print(f"Log Group: {log_group}")
+    print(f"Region: {args.region}")
+    print(f"Query: {args.query}")
+    print(f"Hours: {args.hours}")
+    print("-" * 50)
+
+    runner = AsyncCloudWatchLogsRunner(test_params)
+    queries = {
+        "simple-query": args.query,
+        "match-all": {"match_all": {}},
+        # "match-field": {"match": {"field": "value"}},
+        # "term-query": {"term": {"field": "value"}},
+        # "range-query": {"range": {"field": {"gte": "2023-01-01", "lte": "2023-12-31"}}},
+        # "wildcard-query": {"wildcard": {"field": "value*"}}
+    }
+
+    try:
+        for test_name, query in queries.items():
+            print(f"Test Name: {test_name}, Query: {query}")
+            response = await runner.search(query, time_range_hours=args.hours)
+            print("Response:")
+            print(json.dumps(response, indent=2))
+            print("-" * 50)
+    except Exception as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    asyncio.run(test_runner())

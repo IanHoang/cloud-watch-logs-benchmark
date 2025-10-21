@@ -13,7 +13,7 @@ Benchmark CloudWatch Logs alongside OpenSearch using OpenSearch Benchmark.
 
 1. **Install dependencies**
    ```bash
-   pip install aioboto3 boto3 tqdm
+   pip install aioboto3 boto3 tqdm opensearch-benchmark
    ```
 
 2. **Configure AWS credentials**
@@ -32,20 +32,27 @@ Benchmark CloudWatch Logs alongside OpenSearch using OpenSearch Benchmark.
 ### Ingest Data
 ```bash
 # Basic ingestion
-python ingest_data.py data.jsonl --log-group /benchmark/big5
+python3 data_ingester.py documents-1000-1k.json \
+--log-group test-cwl \
+--region us-east-1
 
 # With custom stream and region
-python ingest_data.py data.json \
+python data_ingester.py data.json \
   --log-group /benchmark/test \
   --log-stream my-stream \
   --region us-west-2
+```
+
+### Test CW Runner
+```
+python3 test_cw_runner.py --region us-east-1 --log-group opensearch-infra-stack-geonames-2LogGroup/opensearch.log --query "INFO" --hours 1
 ```
 
 ### Run Benchmark
 ```bash
 # Benchmark CloudWatch Logs
 opensearch-benchmark execute-test \
-  --workload-path ./workloads/cloudwatch_logs_workload.py \
+  --workload-path ./test_workload.py \
   --test-procedure cloudwatch-logs-benchmark \
   --target-hosts localhost:9200
 
