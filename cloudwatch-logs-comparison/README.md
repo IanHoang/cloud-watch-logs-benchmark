@@ -1,5 +1,8 @@
 ## CloudWatch Logs Comparison OSB Workload
 
+### Prerequisites
+- aioboto3
+
 This repository contains the **CloudWatch Logs Comparison** workload for benchmarking AWS CloudWatch Logs against OpenSearch using OpenSearch Benchmark. This workload uses real-world client ingestion log query patterns from production AWS services to provide meaningful performance comparisons across different query languages and target platforms.
 
 This workload enables direct performance comparison between:
