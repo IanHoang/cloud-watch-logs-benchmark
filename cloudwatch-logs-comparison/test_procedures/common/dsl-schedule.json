@@ -1,138 +1,138 @@
 {
-  "operation": "0-count-query",
+  "operation": "os-dsl-0-count-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "1-sum-bytes-query",
+  "operation": "os-dsl-1-sum-bytes-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "2-host-count-query",
+  "operation": "os-dsl-2-host-count-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "3-host-filter-query",
+  "operation": "os-dsl-3-host-filter-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "4-hostname-filter-query",
+  "operation": "os-dsl-4-hostname-filter-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "5-frontend-host-query",
+  "operation": "os-dsl-5-frontend-host-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "6-iad12-host-query",
+  "operation": "os-dsl-6-iad12-host-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "7-cell1-host-query",
+  "operation": "os-dsl-7-cell1-host-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "8-host-group-query",
+  "operation": "os-dsl-8-host-group-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "9-timestamp-query",
+  "operation": "os-dsl-9-timestamp-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "10-host-timestamp-query",
+  "operation": "os-dsl-10-host-timestamp-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "11-limit-query",
+  "operation": "os-dsl-11-limit-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "12-sum-bytes-by-host-query",
+  "operation": "os-dsl-12-sum-bytes-by-host-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "13-max-bytes-by-host-query",
+  "operation": "os-dsl-13-max-bytes-by-host-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "14-distinct-remote-addr-query",
+  "operation": "os-dsl-14-distinct-remote-addr-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "15-distinct-requestid-query",
+  "operation": "os-dsl-15-distinct-requestid-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "16-distinct-hostname-query",
+  "operation": "os-dsl-16-distinct-hostname-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "17-sum-req-content-query",
+  "operation": "os-dsl-17-sum-req-content-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "18-distinct-remote-addr-host-query",
+  "operation": "os-dsl-18-distinct-remote-addr-host-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
   "clients": {{ search_clients | default(1) }}
 },
 {
-  "operation": "19-max-bytes-query",
+  "operation": "os-dsl-19-max-bytes-query",
   "warmup-iterations": {{ warmup_iterations | default(100) | tojson }},
   "iterations": {{ test_iterations | default(50) | tojson }},
   "target-throughput": {{ target_throughput | default(1) | tojson }},
