@@ -3,6 +3,7 @@
   "description": "Runs DSL queries against OpenSearch for client ingestion log analysis",
   "default": true,
   "schedule": [
+    {{ benchmark.collect(parts="common_operations/workload_setup.json") }},
     {{ benchmark.collect(parts="common/dsl-schedule.json") }}
   ]
 },
