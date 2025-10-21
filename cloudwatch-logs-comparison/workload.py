@@ -5,13 +5,41 @@ import json
 from datetime import datetime, timedelta
 from typing import Dict, Any, Optional
 
+from osbenchmark.worker_coordinator.runner import Runner
 
-class AsyncCloudWatchLogsRunner:
-    def __init__(self, params: Dict[str, Any]):
+
+class CloudWatchLogsRunner(Runner):
+    RUNNER_NAME = "cloudwatch-logs-search"
+
+    def __init__(self):
+        self.session = None
+        self.region = None
+        self.log_group = None
+        self.query_params = None
+
+    async def __call__(self, opensearch, params):
+        """Main runner method called by OpenSearch Benchmark"""
+        # Initialize instance variables from params
         self.region = params.get('region', 'us-east-1')
         self.log_group = params['log_group']
         self.query_params = params.get('query_params', {})
         self.session = aioboto3.Session()
+
+        # Extract query - handle different parameter formats
+        query = None
+        if 'body' in params:
+            query = params['body'].get('query', params['body'])
+        elif 'query' in params:
+            query = params['query']
+        else:
+            query = {'match_all': {}}
+
+        # Execute the search
+        response = await self.search(query, **params)
+        return response
+
+    def __repr__(self):
+        return self.RUNNER_NAME
 
     async def search(self, query: Any, **kwargs) -> Dict[str, Any]:
         """Execute search against CloudWatch Logs"""
@@ -223,23 +251,4 @@ class AsyncCloudWatchLogsRunner:
 
 # Register with OpenSearch Benchmark
 def register(registry):
-    registry.register_runner("cloudwatch-logs-search", cloudwatch_logs_search, async_runner=True)
-
-
-async def cloudwatch_logs_search(es, params):
-    """Main runner function for OpenSearch Benchmark"""
-    runner = AsyncCloudWatchLogsRunner(params)
-
-    # Extract query - handle different parameter formats
-    query = None
-    if 'body' in params:
-        query = params['body'].get('query', params['body'])
-    elif 'query' in params:
-        query = params['query']
-    else:
-        query = {'match_all': {}}
-
-    # Execute the search
-    response = await runner.search(query, **params)
-
-    return response
+    registry.register_runner(CloudWatchLogsRunner.RUNNER_NAME, CloudWatchLogsRunner(), async_runner=True)
