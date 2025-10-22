@@ -249,6 +249,10 @@ class CloudWatchLogsRunner(Runner):
         return f'fields @timestamp, @message | filter @message like /{query}/ | limit 1000'
 
 
+# Flag to indicate this workload needs simplified coordinator
+USE_SIMPLE_COORDINATOR = True
+
 # Register with OpenSearch Benchmark
 def register(registry):
+    # Register the CloudWatch runner
     registry.register_runner(CloudWatchLogsRunner.RUNNER_NAME, CloudWatchLogsRunner(), async_runner=True)
