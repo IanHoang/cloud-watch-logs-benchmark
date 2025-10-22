@@ -120,14 +120,43 @@ class CloudWatchIngester:
         log_events.sort(key=lambda x: x['timestamp'])
 
         # Send in batches with progress tracking
-        batch_size = 1000  # CloudWatch limit: 10,000 events or 1MB per request
+        # CloudWatch limits: 10,000 events AND 1MB per request
+        max_batch_events = 10000
+        max_batch_bytes = 1048576  # 1MB
+        # Add 26 bytes overhead per event (for timestamp and message structure)
+        overhead_per_event = 26
+
         total_sent = 0
         failed_batches = 0
+        batch_num = 0
 
         with tqdm(total=len(log_events), desc="Ingesting", unit="records") as pbar:
-            for i in range(0, len(log_events), batch_size):
-                batch = log_events[i:i + batch_size]
+            i = 0
+            while i < len(log_events):
+                batch = []
+                batch_size_bytes = 0
 
+                # Build batch respecting both event count and size limits
+                while i < len(log_events) and len(batch) < max_batch_events:
+                    event = log_events[i]
+                    event_size = len(event['message'].encode('utf-8')) + overhead_per_event
+
+                    # Check if adding this event would exceed size limit
+                    if batch_size_bytes + event_size > max_batch_bytes and len(batch) > 0:
+                        break
+
+                    batch.append(event)
+                    batch_size_bytes += event_size
+                    i += 1
+
+                if not batch:
+                    # Single event exceeds 1MB - skip it
+                    pbar.write(f"⚠️  Skipping event {i+1}: size {event_size:,} bytes exceeds 1MB limit")
+                    i += 1
+                    pbar.update(1)
+                    continue
+
+                batch_num += 1
                 try:
                     response = self.cw_client.put_log_events(
                         logGroupName=self.log_group,
@@ -143,7 +172,7 @@ class CloudWatchIngester:
 
                 except Exception as e:
                     failed_batches += 1
-                    pbar.write(f"❌ Failed to send batch {i//batch_size + 1}: {e}")
+                    pbar.write(f"❌ Failed to send batch {batch_num}: {e}")
                     pbar.update(len(batch))
 
         end_time = time.time()
